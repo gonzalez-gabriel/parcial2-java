@@ -1,0 +1,16 @@
+# Específico a NetBeans #
+/Practica23-G30/nbproject/private/
+/Practica23-G30/build/
+/Practica23-G30/nbbuild/
+/Practica23-G30/dist/
+/Practica23-G30/nbdist/
+/Practica23-G30/nbactions.xml
+/Practica23-G30/nb-configuration.xml
+
+# Archicos Class #
+*.class
+
+# Otros #
+*.jar
+*.war
+*.ear
