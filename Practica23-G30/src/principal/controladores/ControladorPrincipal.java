@@ -5,6 +5,8 @@
 package principal.controladores;
 
 import java.util.ArrayList;
+import productos.modelos.Categoria;
+import productos.modelos.Estado;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 import usuarios.modelos.Empleado;
@@ -29,9 +31,9 @@ public class ControladorPrincipal {
         Encargado en2 = new Encargado("Martin2_en@gmail.com", "secreto2", "Martin 2", "Juarez 2");
         Encargado en3 = new Encargado("Martin3_en@gmail.com", "secreto3", "Martin 3", "Juarez 3");
 
-        Producto p1 = new Producto(1, "Milanesa con puré", "PLATO PRINCIPAL", "DISPONIBLE", 1250.0f);
-        Producto p2 = new Producto(2, "Empanadas", "PLATO PRINCIPAL", "DISPONIBLE", 150.70f);
-        Producto p3 = new Producto(3, "Flan con dulce", "POSTRE", "NO DISPONIBLE", 850.0f);
+        Producto p1 = new Producto(1, "Milanesa con puré", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 1250.0f);
+        Producto p2 = new Producto(2, "Empanadas", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 150.70f);
+        Producto p3 = new Producto(3, "Flan con dulce", Categoria.POSTRE, Estado.NO_DISPONIBLE, 850.0f);
 
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         ArrayList<Empleado> listaEmpleados = new ArrayList<>();
@@ -75,7 +77,7 @@ public class ControladorPrincipal {
         }
         
         System.out.println(p1.verCategoria());
-        p1.asignarCategoria("PLATO PRINCIPAL MODIFICADO");
+        p1.asignarCategoria(Categoria.ENTRADA);
         System.out.println(p1.verCategoria());
         
     }
