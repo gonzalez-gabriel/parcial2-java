@@ -4,7 +4,9 @@
  */
 package principal.controladores;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import pedidos.modelos.Pedido;
 import productos.modelos.Categoria;
 import productos.modelos.Estado;
 import productos.modelos.Producto;
@@ -35,6 +37,14 @@ public class ControladorPrincipal {
         Producto p2 = new Producto(2, "Empanadas", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 150.70f);
         Producto p3 = new Producto(3, "Flan con dulce", Categoria.POSTRE, Estado.NO_DISPONIBLE, 850.0f);
 
+        Pedido pedido1 = new Pedido(1, LocalDateTime.now(), c1, pedidos.modelos.Estado.CREADO);
+        Pedido pedido2 = new Pedido(2, LocalDateTime.now(), c1, pedidos.modelos.Estado.SOLICITADO);
+        Pedido pedido3 = new Pedido(3, LocalDateTime.now(), c2, pedidos.modelos.Estado.ENTREGADO);
+        
+        Pedido pedido4 = new Pedido(4, LocalDateTime.now(), c3, pedidos.modelos.Estado.CREADO);
+        Pedido pedido5 = new Pedido(5, LocalDateTime.now(), c3, pedidos.modelos.Estado.SOLICITADO);
+        Pedido pedido6 = new Pedido(6, LocalDateTime.now(), c3, pedidos.modelos.Estado.ENTREGADO);
+        
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         ArrayList<Encargado> listaEncargados = new ArrayList<>();
@@ -56,11 +66,6 @@ public class ControladorPrincipal {
         listaProductos.add(p2);
         listaProductos.add(p3);
 
-        System.out.println("\nLISTA DE CLIENTES");
-        for (Cliente cliente : listaClientes) {
-            cliente.mostrar();
-        }
-
         System.out.println("\nLISTA DE EMPLEADOS");
         for (Empleado empleado : listaEmpleados) {
             empleado.mostrar();
@@ -79,6 +84,27 @@ public class ControladorPrincipal {
         System.out.println(p1.verCategoria());
         p1.asignarCategoria(Categoria.ENTRADA);
         System.out.println(p1.verCategoria());
+        
+        
+        System.out.println("\nLISTA DE CLIENTES");
+        for (Cliente cliente : listaClientes) {
+            cliente.mostrar();
+        }
+        
+        c1.agregarPedido(pedido2);
+        c1.agregarPedido(pedido1);
+        
+        c2.agregarPedido(pedido3);
+        
+        c3.agregarPedido(pedido6);
+        c3.agregarPedido(pedido4);
+        c3.agregarPedido(pedido5);
+
+        
+        System.out.println("\nLISTA DE CLIENTES");
+        for (Cliente cliente : listaClientes) {
+            cliente.mostrar();
+        }
         
     }
 }
