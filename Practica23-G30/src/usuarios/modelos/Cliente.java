@@ -73,19 +73,21 @@ public class Cliente {
             @Override
             public int compare(Pedido p1, Pedido p2) {
 //                return Integer.valueOf(p1.verNumero()).compareTo(Integer.valueOf(p2.verNumero()));
-                return p2.verNumero() - p1.verNumero();
+                return p1.verNumero() - p2.verNumero();
             }
         });
+        System.out.println("===CLIENTE===");
         System.out.println("Nombre: " + this.nombre);
         System.out.println("Apellido: " + this.apellido);
         System.out.println("Correo: " + this.correo);
-        System.out.println("Clave: " + this.clave + "\n");
-        System.out.println("Pedidos:");
-        System.out.println("------------");
+        System.out.println("Clave: " + this.clave);
+        System.out.println("==PEDIDOS DEL CLIENTE==");
+        if(this.pedidos.isEmpty()){
+            System.out.println("El cliente no realizo pedidos");
+        }
         for(Pedido pedido : pedidos ){
             pedido.mostrar();
-            System.out.println("|||||||||");
         }
-        System.out.println("------------");
+        System.out.println("");
     }
 }

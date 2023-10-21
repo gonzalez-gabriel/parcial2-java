@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import usuarios.modelos.Cliente;
 
 /**
@@ -19,12 +20,18 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private Cliente cliente;
     private Estado estado;
+    private ArrayList<ProductoDelPedido> productosDelPedido;
     
     public Pedido(int numero, LocalDateTime fechaYHora, Cliente cliente, Estado estado) {
         this.cliente = cliente;
         this.estado = estado;
         this.fechaYHora = fechaYHora;
         this.numero = numero;
+        this.productosDelPedido = new ArrayList<ProductoDelPedido>();
+    }
+    
+    public void agregarProductoDelPedido(ProductoDelPedido pdp) {
+        this.productosDelPedido.add(pdp);
     }
     
     public int verNumero() {
@@ -82,5 +89,11 @@ public class Pedido {
         System.out.println("Hora: " + this.verHora().format(DateTimeFormatter.ofPattern("HH:mm")));
         System.out.println("Cliente: " + this.cliente.verApellido() + ", " + this.cliente.verNombre());
         System.out.println("Estado: " + this.verEstado());
+        System.out.printf("%-20s %s%n", "Producto", "Cantidad");
+        System.out.println("=============================");
+        this.productosDelPedido.forEach(pdp -> {
+            System.out.printf("%-20s %d %n", pdp.verProducto(), pdp.verCantidad());
+        });
+        System.out.println("");
     }
 }

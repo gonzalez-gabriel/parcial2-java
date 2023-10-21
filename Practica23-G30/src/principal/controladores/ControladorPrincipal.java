@@ -7,6 +7,7 @@ package principal.controladores;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import pedidos.modelos.Pedido;
+import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Categoria;
 import productos.modelos.Estado;
 import productos.modelos.Producto;
@@ -33,7 +34,7 @@ public class ControladorPrincipal {
         Encargado en2 = new Encargado("Martin2_en@gmail.com", "secreto2", "Martin 2", "Juarez 2");
         Encargado en3 = new Encargado("Martin3_en@gmail.com", "secreto3", "Martin 3", "Juarez 3");
 
-        Producto p1 = new Producto(1, "Milanesa con puré", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 1250.0f);
+        Producto p1 = new Producto(1, "Milanesa con pure", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 1250.0f);
         Producto p2 = new Producto(2, "Empanadas", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 150.70f);
         Producto p3 = new Producto(3, "Flan con dulce", Categoria.POSTRE, Estado.NO_DISPONIBLE, 850.0f);
 
@@ -44,6 +45,11 @@ public class ControladorPrincipal {
         Pedido pedido4 = new Pedido(4, LocalDateTime.now(), c3, pedidos.modelos.Estado.CREADO);
         Pedido pedido5 = new Pedido(5, LocalDateTime.now(), c3, pedidos.modelos.Estado.SOLICITADO);
         Pedido pedido6 = new Pedido(6, LocalDateTime.now(), c3, pedidos.modelos.Estado.ENTREGADO);
+        
+        ProductoDelPedido pdp1 = new ProductoDelPedido(12, p3);
+        ProductoDelPedido pdp2 = new ProductoDelPedido(23, p2);
+        ProductoDelPedido pdp3 = new ProductoDelPedido(2, p1);
+       
         
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         ArrayList<Empleado> listaEmpleados = new ArrayList<>();
@@ -99,11 +105,38 @@ public class ControladorPrincipal {
         c3.agregarPedido(pedido6);
         c3.agregarPedido(pedido4);
         c3.agregarPedido(pedido5);
-
         
+        pedido2.agregarProductoDelPedido(pdp1);
+        pedido2.agregarProductoDelPedido(pdp2);
+        
+        pedido3.agregarProductoDelPedido(pdp3);
+        pedido3.agregarProductoDelPedido(pdp1);
+        pedido3.agregarProductoDelPedido(pdp2);
+        
+        pedido4.agregarProductoDelPedido(pdp3);
+        
+        pedido6.agregarProductoDelPedido(pdp1);
+        pedido6.agregarProductoDelPedido(pdp2);
+        pedido5.agregarProductoDelPedido(pdp3);
+        
+        ArrayList<Pedido> listaPedidos = new ArrayList<>();
+        listaPedidos.add(pedido6);
+        listaPedidos.add(pedido5);
+
+        listaPedidos.add(pedido4);
+        listaPedidos.add(pedido3);
+        listaPedidos.add(pedido2);
+        listaPedidos.add(pedido1);
+
+
         System.out.println("\nLISTA DE CLIENTES");
         for (Cliente cliente : listaClientes) {
             cliente.mostrar();
+        }
+        
+        System.out.println("\nLISTA DE PEDIDOS");
+        for (Pedido pedido : listaPedidos) {
+            pedido.mostrar();
         }
         
     }
