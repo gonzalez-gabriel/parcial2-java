@@ -76,18 +76,7 @@ public class Cliente {
                 return p1.verNumero() - p2.verNumero();
             }
         });
-        System.out.println("===CLIENTE===");
-        System.out.println("Nombre: " + this.nombre);
-        System.out.println("Apellido: " + this.apellido);
-        System.out.println("Correo: " + this.correo);
-        System.out.println("Clave: " + this.clave);
-        System.out.println("==PEDIDOS DEL CLIENTE==");
-        if(this.pedidos.isEmpty()){
-            System.out.println("El cliente no realizo pedidos");
-        }
-        for(Pedido pedido : pedidos ){
-            pedido.mostrar();
-        }
-        System.out.println("");
+        System.out.println(this.apellido + ", " + this.nombre);
+        System.out.println("Correo:" + this.correo);
     }
 }

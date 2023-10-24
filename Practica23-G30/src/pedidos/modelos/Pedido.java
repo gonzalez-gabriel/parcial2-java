@@ -22,16 +22,18 @@ public class Pedido {
     private Estado estado;
     private ArrayList<ProductoDelPedido> productosDelPedido;
     
-    public Pedido(int numero, LocalDateTime fechaYHora, Cliente cliente, Estado estado) {
+    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> list, Cliente cliente) {
         this.cliente = cliente;
-        this.estado = estado;
+        this.estado = estado.CREADO;
         this.fechaYHora = fechaYHora;
         this.numero = numero;
-        this.productosDelPedido = new ArrayList<ProductoDelPedido>();
+        this.productosDelPedido = list;
     }
     
     public void agregarProductoDelPedido(ProductoDelPedido pdp) {
-        this.productosDelPedido.add(pdp);
+        if(!this.productosDelPedido.contains(pdp)) {
+            this.productosDelPedido.add(pdp);
+        }
     }
     
     public int verNumero() {
@@ -82,18 +84,39 @@ public class Pedido {
     public void cambiarNumero(int numero) {
         this.numero = numero;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + this.numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        return this.numero == other.numero;
+    }
+    
     
     public void mostrar() {
         System.out.println("Nro: " + this.numero);
-        System.out.println("Fecha: " + this.verFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        System.out.println("Hora: " + this.verHora().format(DateTimeFormatter.ofPattern("HH:mm")));
+        System.out.println("Fecha: " + this.verFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+ "             Hora: " + this.verHora().format(DateTimeFormatter.ofPattern("HH:mm")));
         System.out.println("Cliente: " + this.cliente.verApellido() + ", " + this.cliente.verNombre());
         System.out.println("Estado: " + this.verEstado());
-        System.out.printf("%-20s %s%n", "Producto", "Cantidad");
-        System.out.println("=============================");
+        System.out.printf("        %-20s %s%n", "Producto", "Cantidad");
+        System.out.println("        =============================");
         this.productosDelPedido.forEach(pdp -> {
-            System.out.printf("%-20s %d %n", pdp.verProducto(), pdp.verCantidad());
+            System.out.printf("        %-20s %d %n", pdp.verProducto(), pdp.verCantidad());
         });
-        System.out.println("");
     }
 }

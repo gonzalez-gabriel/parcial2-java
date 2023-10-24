@@ -9,13 +9,18 @@ package pedidos.modelos;
  * @author gabri
  */
 public enum Estado {
-    CREADO,
-    SOLICITADO,
-    PROCESANDO,
-    ENTREGADO;
+    CREADO("Creando"),
+    SOLICITADO("Solicitado"),
+    PROCESANDO("Procesando"),
+    ENTREGADO("Entregado");
 
+    private String nombre;
+    
+    private Estado(String nombre) {
+        this.nombre = nombre;
+    }
     @Override
     public String toString() {
-        return this.name().toUpperCase();
+        return this.nombre;
     }
 }

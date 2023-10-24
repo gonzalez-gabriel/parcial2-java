@@ -9,12 +9,18 @@ package productos.modelos;
  * @author gabri
  */
 public enum Categoria {
-    ENTRADA,
-    PLATO_PRINCIPAL,
-    POSTRE;
+  ENTRADA("Entrada"),
+  PLATOPRINCIPAL("Plato Principal"),
+  POSTRE("Postre");
 
-    @Override
-    public String toString() {
-        return this.name().toUpperCase();
-    }
+  private String nombre;
+
+  Categoria(String nombre) {
+    this.nombre = nombre;
+  }
+
+  @Override
+  public String toString() {
+    return this.nombre;
+  }
 }
