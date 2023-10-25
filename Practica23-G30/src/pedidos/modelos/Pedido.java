@@ -109,6 +109,8 @@ public class Pedido {
     
     
     public void mostrar() {
+        System.out.println("");
+        System.out.println("");
         System.out.println("Nro: " + this.numero);
         System.out.println("Fecha: " + this.verFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+ "             Hora: " + this.verHora().format(DateTimeFormatter.ofPattern("HH:mm")));
         System.out.println("Cliente: " + this.cliente.verApellido() + ", " + this.cliente.verNombre());

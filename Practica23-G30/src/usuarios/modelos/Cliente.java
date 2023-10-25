@@ -19,12 +19,21 @@ public class Cliente extends Usuario {
         this.pedidos = new ArrayList<>();
     }
 
+    @Override
+    public ArrayList<Pedido> verPedidos() {
+        return this.pedidos;
+    }
     
     public void agregarPedido(Pedido pedido) {
-        this.pedidos.add(pedido);
+        if(!this.pedidos.contains(pedido)) {
+            this.pedidos.add(pedido);
+        } else {
+            int indice = this.pedidos.indexOf(pedido);
+            this.pedidos.set(indice, pedido);
+        }
     }
 
-    public void quitarPedido(Pedido pedido) {
+    public void cancelarPedido(Pedido pedido) {
         this.pedidos.remove(pedido);
     }
 }
