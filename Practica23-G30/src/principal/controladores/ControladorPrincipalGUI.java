@@ -28,10 +28,10 @@ public class ControladorPrincipalGUI {
     */
         establecerLookAndFeel("Nimbus"); 
         // PRODUCTO
-//        VentanaAMProducto ventana = new VentanaAMProducto(null);
-//        ventana.setLocationRelativeTo(null);
-//        ventana.setTitle("Nuevo producto");
-//        ventana.setVisible(true);
+        VentanaAMProducto ventana = new VentanaAMProducto(null);
+        ventana.setLocationRelativeTo(null);
+        ventana.setTitle("Nuevo producto");
+        ventana.setVisible(true);
         
         //CLIENTE
       
@@ -49,10 +49,10 @@ public class ControladorPrincipalGUI {
         
        //ENCARGADO
        
-        VentanaAMEncargado ventana = new VentanaAMEncargado(null);
-        ventana.setLocationRelativeTo(null);
-        ventana.setTitle("Nuevo encargado");
-        ventana.setVisible(true);
+//        VentanaAMEncargado ventana = new VentanaAMEncargado(null);
+//        ventana.setLocationRelativeTo(null);
+//        ventana.setTitle("Nuevo encargado");
+//        ventana.setVisible(true);
        
     }
     

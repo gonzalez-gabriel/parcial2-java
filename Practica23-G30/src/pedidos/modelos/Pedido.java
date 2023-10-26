@@ -52,11 +52,11 @@ public class Pedido {
         return this.fechaYHora.toLocalTime();
     }
 
-    public void cambiarFecha(LocalDate fecha) {
+    public void asignarFecha(LocalDate fecha) {
         this.fechaYHora = this.fechaYHora.with(fecha);
     }
 
-    public void cambiarHora(LocalTime hora) {
+    public void asignarHora(LocalTime hora) {
         this.fechaYHora = this.fechaYHora.with(hora);
     }
 
@@ -69,19 +69,19 @@ public class Pedido {
         return this.estado;
     }
 
-    public void cambiarEstado(Estado estado) {
+    public void asignarEstado(Estado estado) {
         this.estado = estado;
     }
 
-    public void cambiarFechaYHora(LocalDateTime fechaYHora) {
+    public void asignarFechaYHora(LocalDateTime fechaYHora) {
         this.fechaYHora = fechaYHora;
     }
 
-    public void cambiarCliente(Cliente cliente) {
+    public void asignarCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public void cambiarNumero(int numero) {
+    public void asignarNumero(int numero) {
         this.numero = numero;
     }
 
