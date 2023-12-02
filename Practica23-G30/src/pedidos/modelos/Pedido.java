@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import usuarios.modelos.Cliente;
 
 /**
@@ -20,9 +21,9 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private Cliente cliente;
     private Estado estado;
-    private ArrayList<ProductoDelPedido> productosDelPedido;
+    private List<ProductoDelPedido> productosDelPedido = new ArrayList<>();
     
-    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> list, Cliente cliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora, List<ProductoDelPedido> list, Cliente cliente) {
         this.cliente = cliente;
         this.estado = estado.CREADO;
         this.fechaYHora = fechaYHora;
@@ -60,7 +61,7 @@ public class Pedido {
         this.fechaYHora = this.fechaYHora.with(hora);
     }
     
-    public ArrayList<ProductoDelPedido> verPdp() {
+    public List<ProductoDelPedido> verPdp() {
         return this.productosDelPedido;
     }
 
@@ -112,7 +113,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "\nPedido: " + numero + "Fecha: "  + fechaYHora.toLocalDate() + "Hora: " + fechaYHora.toLocalTime() + "Estado: " + estado + "Cliente: " + cliente + "ProductosDelPedido: " + productosDelPedido;
+        return "\nPedido: " + numero + " Fecha: "  + fechaYHora.toLocalDate() + " Hora: " + fechaYHora.toLocalTime() + " Estado: " + estado + " Cliente: " + cliente + " ProductosDelPedido: " + productosDelPedido;
     }
     
     

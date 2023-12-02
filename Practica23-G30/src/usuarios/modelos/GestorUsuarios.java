@@ -6,6 +6,9 @@ package usuarios.modelos;
 
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  *
@@ -19,7 +22,7 @@ public class GestorUsuarios implements IGestorUsuarios {
     private GestorUsuarios() {
     }
 
-    public static GestorUsuarios crear() {
+    public static GestorUsuarios instanciar() {
         if (gestor == null) {
             gestor = new GestorUsuarios();
         }
@@ -64,12 +67,21 @@ public class GestorUsuarios implements IGestorUsuarios {
     }
 
     @Override
-    public ArrayList<Usuario> verUsuarios() {
+    public List<Usuario> verUsuarios() {
+        Comparator<Usuario> comparatorApellidoYNombre = (Usuario u1, Usuario u2) -> {
+            if (!u1.verApellido().equals(u2.verApellido())) {
+                return u1.verApellido().compareTo(u2.verApellido());
+            } else {
+
+                return u1.verNombre().compareTo(u2.verNombre());
+            }
+        };
+        Collections.sort(usuarios, comparatorApellidoYNombre);
         return this.usuarios;
     }
 
     @Override
-    public ArrayList<Usuario> buscarUsuarios(String apellido) {
+    public List<Usuario> buscarUsuarios(String apellido) {
         if (apellido.isBlank() || apellido.isEmpty()) {
             return null;
         }
@@ -81,6 +93,17 @@ public class GestorUsuarios implements IGestorUsuarios {
             }
         }
 
+        Comparator<Usuario> comparatorApellidoYNombre = (Usuario u1, Usuario u2) -> {
+            if (!u1.verApellido().equals(u2.verApellido())) {
+                return u1.verApellido().compareTo(u2.verApellido());
+            } else {
+
+                return u1.verNombre().compareTo(u2.verNombre());
+            }
+
+        };
+
+        Collections.sort(usuariosBuscados, comparatorApellidoYNombre);
         return usuariosBuscados;
     }
 

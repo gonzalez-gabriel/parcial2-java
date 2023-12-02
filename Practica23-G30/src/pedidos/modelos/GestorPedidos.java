@@ -9,6 +9,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
@@ -25,7 +28,7 @@ public class GestorPedidos implements IGestorPedidos {
 
     }
 
-    public static GestorPedidos crear() {
+    public static GestorPedidos instanciar() {
         if (gestor == null) {
             gestor = new GestorPedidos();
         }
@@ -34,7 +37,7 @@ public class GestorPedidos implements IGestorPedidos {
     }
 
     @Override
-    public String crearPedido(int numero, LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+    public String crearPedido(int numero, LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         String validez = validarDatos(numero, fecha, hora, productosDelPedido, cliente);
 
         if (!validez.equals(VALIDACION_EXITO)) {
@@ -67,7 +70,9 @@ public class GestorPedidos implements IGestorPedidos {
     }
 
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
+        Comparator <Pedido> comparatorNumero = (Pedido p1, Pedido p2) -> p1.verNumero() - p2.verNumero();
+        Collections.sort(this.pedidos, comparatorNumero);
         return this.pedidos;
     }
 
@@ -115,7 +120,7 @@ public class GestorPedidos implements IGestorPedidos {
     }
 
     @Override
-    public String validarDatos(int numero, LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+    public String validarDatos(int numero, LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         if (numero <= 0) {
             return ERROR_NUMERO;
         }

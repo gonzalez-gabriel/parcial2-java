@@ -5,6 +5,7 @@
 package interfaces;
 
 import java.util.ArrayList;
+import java.util.List;
 import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
 
@@ -32,9 +33,9 @@ public interface IGestorUsuarios {
 
     public String borrarUsuario(Usuario usuario);
 
-    public ArrayList<Usuario> verUsuarios();
+    public List<Usuario> verUsuarios();
 
-    public ArrayList<Usuario> buscarUsuarios(String apellido);
+    public List<Usuario> buscarUsuarios(String apellido);
 
     public boolean existeEsteUsuario(Usuario usuario);
 
