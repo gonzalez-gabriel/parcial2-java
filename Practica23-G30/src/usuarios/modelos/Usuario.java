@@ -17,14 +17,20 @@ public abstract class Usuario {
     private String clave;
     private String apellido;
     private String nombre;
+    private Perfil perfil;
 
-    public Usuario(String correo, String clave, String apellido, String nombre) {
+    public Usuario(String correo, String clave, String apellido, String nombre, Perfil perfil) {
         this.correo = correo;
         this.clave = clave;
         this.apellido = apellido;
         this.nombre = nombre;
+        this.perfil = perfil;
     }
 
+    public Perfil verPerfil() {
+        return perfil;
+    }
+    
     public String verCorreo() {
         return correo;
     }
@@ -80,6 +86,12 @@ public abstract class Usuario {
         final Usuario other = (Usuario) obj;
         return Objects.equals(this.correo.toLowerCase(), other.correo.toLowerCase());
     }
+
+    @Override
+    public String toString() {
+        return "\nNombre: " + nombre + "Apellido: " + apellido + "Correo: " + correo + "Perfil: " + perfil;
+    }
+    
     
     
     

@@ -59,7 +59,10 @@ public class Pedido {
     public void asignarHora(LocalTime hora) {
         this.fechaYHora = this.fechaYHora.with(hora);
     }
-
+    
+    public ArrayList<ProductoDelPedido> verPdp() {
+        return this.productosDelPedido;
+    }
 
     public Cliente verCliente() {
         return this.cliente;
@@ -106,6 +109,12 @@ public class Pedido {
         final Pedido other = (Pedido) obj;
         return this.numero == other.numero;
     }
+
+    @Override
+    public String toString() {
+        return "\nPedido: " + numero + "Fecha: "  + fechaYHora.toLocalDate() + "Hora: " + fechaYHora.toLocalTime() + "Estado: " + estado + "Cliente: " + cliente + "ProductosDelPedido: " + productosDelPedido;
+    }
+    
     
     
     public void mostrar() {

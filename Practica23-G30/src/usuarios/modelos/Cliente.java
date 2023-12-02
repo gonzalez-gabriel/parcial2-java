@@ -12,11 +12,10 @@ import pedidos.modelos.Pedido;
  * @author gabri
  */
 public class Cliente extends Usuario {
-    private final ArrayList<Pedido> pedidos;
+    private final ArrayList<Pedido> pedidos = new ArrayList<>();
     
-    public Cliente(String correo, String clave, String apellido, String nombre) {
-        super(correo, clave, apellido, nombre);
-        this.pedidos = new ArrayList<>();
+    public Cliente(String correo, String clave, String apellido, String nombre, Perfil perfil) {
+        super(correo, clave, apellido, nombre, perfil);
     }
 
     @Override
