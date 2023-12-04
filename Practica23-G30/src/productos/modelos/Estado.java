@@ -11,9 +11,9 @@ package productos.modelos;
 public enum Estado {
     DISPONIBLE("Disponible"),
     NO_DISPONIBLE("No disponible");
-    
+
     private String valor;
-    
+
     private Estado(String valor) {
         this.valor = valor;
     }
@@ -21,5 +21,14 @@ public enum Estado {
     @Override
     public String toString() {
         return this.valor;
+    }
+
+    public static Estado fromString(String valor) {
+        for (Estado estado : Estado.values()) {
+            if (estado.valor.equalsIgnoreCase(valor)) {
+                return estado;
+            }
+        }
+        throw new IllegalArgumentException("No se encontró un estado con el valor: " + valor);
     }
 }

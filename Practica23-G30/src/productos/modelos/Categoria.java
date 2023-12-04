@@ -9,18 +9,27 @@ package productos.modelos;
  * @author gabri
  */
 public enum Categoria {
-  ENTRADA("Entrada"),
-  PLATOPRINCIPAL("Plato Principal"),
-  POSTRE("Postre");
+    ENTRADA("Entrada"),
+    PLATO_PRINCIPAL("Plato Principal"),
+    POSTRE("Postre");
 
-  private String nombre;
+    private String nombre;
 
-  Categoria(String nombre) {
-    this.nombre = nombre;
-  }
+    Categoria(String nombre) {
+        this.nombre = nombre;
+    }
 
-  @Override
-  public String toString() {
-    return this.nombre;
-  }
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
+
+    public static Categoria fromString(String nombre) {
+        for (Categoria categoria : Categoria.values()) {
+            if (categoria.nombre.equalsIgnoreCase(nombre)) {
+                return categoria;
+            }
+        }
+        throw new IllegalArgumentException("No se encontró una categoría con el nombre: " + nombre);
+    }
 }
