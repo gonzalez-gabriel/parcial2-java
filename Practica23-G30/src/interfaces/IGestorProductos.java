@@ -25,6 +25,10 @@ public interface IGestorProductos {
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
     public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
+    public static final String ARCHIVO_ERROR_LECTURA = "No se pudo leer el archivo";
+    public static final String ARCHIVO_EXITO_LECTURA = "Archivo recuperado exitosamente";
+    public static final String ARCHIVO_ERROR_GUARDAR = "Error al guardar el archivo";
+    public static final String ARCHIVO_EXITO_GUARDAR = "Archivo guardado exitosamente";
     
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado);
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado);   

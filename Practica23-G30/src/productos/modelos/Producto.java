@@ -92,7 +92,7 @@ public class Producto {
     }
     
     public void mostrar() {
-//        System.out.println("Codigo: " + codigo);
+        System.out.println("Codigo: " + codigo);
         System.out.println("Producto: " + descripcion);
         System.out.println("Precio:" + precio);
         System.out.println("Categoria:" + categoria + " Estado:" + estado);

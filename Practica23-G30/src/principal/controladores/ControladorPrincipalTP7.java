@@ -1,31 +1,29 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package principal.controladores;
 
-import interfaces.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+import interfaces.IGestorProductos;
+import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import productos.modelos.Producto;
 import java.util.List;
 import javax.swing.UIManager;
-import pedidos.modelos.GestorPedidos;
-import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Categoria;
 import productos.modelos.Estado;
 import productos.modelos.GestorProductos;
-import productos.modelos.Producto;
-import usuarios.modelos.Cliente;
 import usuarios.modelos.GestorUsuarios;
-import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
+//import usuarios.vistas.VentanaAMUsuario;
 
 /**
  *
- * @author gabri
+ * @author root
  */
-public class ControladorPrincipal  {
+public class ControladorPrincipalTP7  {
     public static void main(String[] args) {
         IGestorProductos gp = GestorProductos.instanciar();
         IGestorUsuarios gu = GestorUsuarios.instanciar();
@@ -133,19 +131,19 @@ public class ControladorPrincipal  {
 
     } 
     
-    public static void establecerLookAndFeel(String laf) {
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if (laf.equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                }
-            }
-        } catch (Exception e) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } 
-            catch (Exception e2) {
-            }
-        }
-    }
+//    public static void establecerLookAndFeel(String laf) {
+//        try {
+//            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+//                if (laf.equals(info.getName())) {
+//                    UIManager.setLookAndFeel(info.getClassName());
+//                }
+//            }
+//        } catch (Exception e) {
+//            try {
+//                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//            } 
+//            catch (Exception e2) {
+//            }
+//        }
+//    }
 }
