@@ -25,7 +25,7 @@ public interface IGestorUsuarios {
     public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
     public static final String PERFIL_CAMBIO = "El usuario no puede cambiarse de perfil";
     public static final String ERROR_PERMISOS = "No se tienen los permisos para realizar esta funcionalidad";
-    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con esecorreo";
+    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
     public static final String USUARIO_INEXISTENTE = "No existe el usuario especificado";
     public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
 

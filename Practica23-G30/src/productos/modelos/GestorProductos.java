@@ -208,12 +208,12 @@ public class GestorProductos implements IGestorProductos {
             }
         }
         this.productos.remove(producto);
-        
+
         String msj = this.guardarEnArchivo();
         if (!msj.equals(ARCHIVO_EXITO_GUARDAR)) {
             return msj;
         }
-        
+
         return EXITO_BORRADO;
     }
 

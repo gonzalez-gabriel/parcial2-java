@@ -14,6 +14,7 @@ import pedidos.modelos.Pedido;
  * @author gabri
  */
 public abstract class Usuario {
+
     private String correo;
     private String clave;
     private String apellido;
@@ -31,7 +32,7 @@ public abstract class Usuario {
     public Perfil verPerfil() {
         return perfil;
     }
-    
+
     public String verCorreo() {
         return correo;
     }
@@ -63,7 +64,7 @@ public abstract class Usuario {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public abstract List<Pedido> verPedidos();
 
     @Override
@@ -92,13 +93,11 @@ public abstract class Usuario {
     public String toString() {
         return "\nNombre: " + nombre + " Apellido: " + apellido + " Correo: " + correo + " Perfil: " + perfil;
     }
-    
-    
-    
-    
-    public void mostrar () {
+
+    public void mostrar() {
         System.out.println(this.apellido + ", " + this.nombre);
         System.out.println("Correo:" + this.correo);
+        System.out.println("Perfil: " + this.perfil);
     }
-    
+
 }

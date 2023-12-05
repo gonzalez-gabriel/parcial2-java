@@ -17,77 +17,84 @@ import productos.modelos.ModeloComboEstados;
 import productos.modelos.Producto;
 
 public class VentanaAMProducto extends JDialog {
+
     private ArrayList<Producto> productos = new ArrayList<>();
-    
+
     /**
      * Constructor
+     *
      * @param ventanaPadre ventana padre (VentanaUsuarios en este caso)
      */
     public VentanaAMProducto(Dialog ventanaPadre) {
         super(ventanaPadre, true);
-        initComponents(); 
+        initComponents();
         this.configurarComboCategorias();
         this.configurarComboEstados();
     }
-    
+
     /**
      * Configura el combo de categorias
      */
     private void configurarComboCategorias() {
         ModeloComboCategorias mcc = new ModeloComboCategorias();
         this.comboCategoria.setModel(mcc);
-        
+
     }
-    
+
     /**
      * Configura el combo de estados
      */
     private void configurarComboEstados() {
         ModeloComboEstados mce = new ModeloComboEstados();
         this.comboEstado.setModel(mce);
-        
+
     }
+
     /**
      * Devuelve el campo txtCodigo
-     * @return JTextField  - campo txtCodigo
+     *
+     * @return JTextField - campo txtCodigo
      */
     public JTextField verCodigo() {
         return this.txtCodigo;
-    } 
+    }
 
     /**
      * Devuelve el campo txtDescripcion
-     * @return String  - campo txtDescripcion
-     */    
+     *
+     * @return String - campo txtDescripcion
+     */
     public JTextField verDescripcion() {
         return this.txtDescripcion;
     }
-    
+
     /**
      * Devuelve el campo txtPrecio
-     * @return JTextField  - campo txtPrecio
+     *
+     * @return JTextField - campo txtPrecio
      */
     public JTextField verPrecio() {
         return this.txtPrecio;
     }
-       
+
     /**
      * Devuelve el combo de categorías
-     * @return JComboBox  - combo de categorías
-     */    
+     *
+     * @return JComboBox - combo de categorías
+     */
     public JComboBox verCategoria() {
         return this.comboCategoria;
     }
-    
+
     /**
      * Devuelve el combo de estados
-     * @return JComboBox  - combo de estados
-     */    
+     *
+     * @return JComboBox - combo de estados
+     */
     public JComboBox verEstado() {
         return this.comboEstado;
     }
-     
-      
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -142,6 +149,11 @@ public class VentanaAMProducto extends JDialog {
         jLabel4.setText("Código:");
 
         txtCodigo.setToolTipText("Documento del profesor");
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Estado:");
 
@@ -220,19 +232,24 @@ public class VentanaAMProducto extends JDialog {
         int codigo = Integer.parseInt(this.txtCodigo.getText().trim());
         String descripcion = this.txtDescripcion.getText().trim();
         float precio = Float.parseFloat(this.txtPrecio.getText().trim());
-        Categoria categoria = ((ModeloComboCategorias)this.comboCategoria.getModel()).obtenerCategoria();
-        Estado estado = ((ModeloComboEstados)this.comboEstado.getModel()).obtenerEstado();
+        Categoria categoria = ((ModeloComboCategorias) this.comboCategoria.getModel()).obtenerCategoria();
+        Estado estado = ((ModeloComboEstados) this.comboEstado.getModel()).obtenerEstado();
         Producto unProducto = new Producto(codigo, descripcion, categoria, estado, precio);
-        if (!this.productos.contains(unProducto))
+        if (!this.productos.contains(unProducto)) {
             this.productos.add(unProducto);
-        
+        }
+
         System.out.println("Productos");
         System.out.println("=========");
-        for(Producto p : this.productos) {
+        for (Producto p : this.productos) {
             p.mostrar();
             System.out.println();
         }
     }//GEN-LAST:event_btnGuardarClic
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

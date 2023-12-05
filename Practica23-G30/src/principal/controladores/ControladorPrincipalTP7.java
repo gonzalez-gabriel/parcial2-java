@@ -17,7 +17,7 @@ import productos.modelos.Estado;
 import productos.modelos.GestorProductos;
 import usuarios.modelos.GestorUsuarios;
 import usuarios.modelos.Usuario;
-//import usuarios.vistas.VentanaAMUsuario;
+import usuarios.vistas.VentanaAMUsuario;
 
 /**
  *
@@ -118,32 +118,32 @@ public class ControladorPrincipalTP7  {
         }
         System.out.println();
         
-//        establecerLookAndFeel("Nimbus"); 
-//        VentanaAMUsuario ventanaAUsuario = new VentanaAMUsuario(null);
-//              
-//        System.out.println("USUARIOS");
-//        System.out.println("=====");
-//        usuarios=gu.verUsuarios();
-//        for(Usuario u : usuarios) {
-//            u.mostrar();
-//            System.out.println();
-//        }
+        establecerLookAndFeel("Nimbus"); 
+        VentanaAMUsuario ventanaAUsuario = new VentanaAMUsuario(null);
+              
+        System.out.println("USUARIOS");
+        System.out.println("=====");
+        usuarios=gu.verUsuarios();
+        for(Usuario u : usuarios) {
+            u.mostrar();
+            System.out.println();
+        }
 
     } 
     
-//    public static void establecerLookAndFeel(String laf) {
-//        try {
-//            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-//                if (laf.equals(info.getName())) {
-//                    UIManager.setLookAndFeel(info.getClassName());
-//                }
-//            }
-//        } catch (Exception e) {
-//            try {
-//                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//            } 
-//            catch (Exception e2) {
-//            }
-//        }
-//    }
+    public static void establecerLookAndFeel(String laf) {
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if (laf.equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                }
+            }
+        } catch (Exception e) {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } 
+            catch (Exception e2) {
+            }
+        }
+    }
 }
