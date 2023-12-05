@@ -102,7 +102,16 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
 
         txtCorreo.setToolTipText("Correo del usuario");
 
+        txtApellido.setToolTipText("Apellido del usuario");
+
+        txtNombre.setToolTipText("Nombre del usuario");
+
+        passClave.setToolTipText("Contraseña");
+
+        passClaveRepetida.setToolTipText("Repetir contraseña");
+
         comboPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPerfil.setToolTipText("Perfil del usuario");
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
