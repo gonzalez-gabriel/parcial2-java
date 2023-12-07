@@ -55,4 +55,9 @@ public class ModeloTablaUsuarios extends AbstractTableModel{
         this.fireTableDataChanged();
     }
     
+    public void buscarUsuario(String apellido) {
+        this.usuarios = gu.buscarUsuarios(apellido);
+        this.fireTableDataChanged();
+    }
+    
 }

@@ -8,6 +8,7 @@ import interfaces.IControladorUsuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 import principal.vistas.VentanaPrincipal;
 import usuarios.modelos.GestorUsuarios;
 import usuarios.modelos.ModeloTablaUsuarios;
@@ -83,7 +84,23 @@ public class ControladorUsuarios implements IControladorUsuarios{
 
     @Override
     public void btnBuscarClic(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String apellido = this.ventana.verTxtApellido().getText();
+        if(!gu.verUsuarios().isEmpty()) {
+            if((apellido != null) && (!apellido.isBlank())) {
+                if(!gu.buscarUsuarios(apellido).isEmpty()){
+                    mtu.buscarUsuario(apellido);
+                } else {
+                    JOptionPane.showMessageDialog(ventana, "No se encontraron usuarios con ese apellido.", TITULO, JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                mtu.actualizar();
+            }
+                this.ventana.verTablaUsuarios().setRowSelectionInterval(0, 0);
+                this.ventana.verBtnBorrar().setEnabled(true);
+                this.ventana.verBtnModificar().setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(ventana, "La lista de usuarios está vacía.", TITULO, JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
     
