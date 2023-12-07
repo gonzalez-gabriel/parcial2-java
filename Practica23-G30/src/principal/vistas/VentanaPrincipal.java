@@ -40,6 +40,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setMnemonic('U');
         jButton1.setText("Usuarios");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +48,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setMnemonic('P');
         jButton2.setText("Productos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +56,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setMnemonic('e');
         jButton3.setText("Pedidos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
