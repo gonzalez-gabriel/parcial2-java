@@ -6,6 +6,7 @@
 package principal.controladores;
 
 import interfaces.IControladorPrincipal;
+import interfaces.IControladorUsuarios;
 import interfaces.IGestorProductos;
 import interfaces.IGestorUsuarios;
 import java.awt.event.ActionEvent;
@@ -18,9 +19,12 @@ import principal.vistas.VentanaPrincipal;
 import productos.modelos.Categoria;
 import productos.modelos.Estado;
 import productos.modelos.GestorProductos;
+import usuarios.controladores.ControladorUsuarios;
 import usuarios.modelos.GestorUsuarios;
+import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
 import usuarios.vistas.VentanaAMUsuario;
+import usuarios.vistas.VentanaUsuarios;
 
 /**
  *
@@ -130,9 +134,22 @@ public class ControladorPrincipal implements IControladorPrincipal {
             }
         }
         System.out.println();
+        
+        System.out.println(gu.crearUsuario("Juan@gmail.com", "Perez", "jperez", Perfil.EMPLEADO, "123", "123"));
+        System.out.println(gu.crearUsuario("Ana@gmail.com", "Fernandez", "afernandez", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Luis@gmail.com", "Gonzalez", "lgonzalez", Perfil.ENCARGADO, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan1@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan2@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan3@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan4@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan5@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan6@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan7@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan8@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan9@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+        System.out.println(gu.crearUsuario("Juan10@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
 
-//        establecerLookAndFeel("Nimbus");
-//        VentanaAMUsuario ventanaAUsuario = new VentanaAMUsuario(null);
+        establecerLookAndFeel("Nimbus");
         IControladorPrincipal cp = new ControladorPrincipal();
 
         System.out.println("USUARIOS");
@@ -147,7 +164,7 @@ public class ControladorPrincipal implements IControladorPrincipal {
 
     @Override
     public void btnUsuariosClic(ActionEvent evt) {
-        VentanaAMUsuario ventanaAUsuario = new VentanaAMUsuario(null);
+        IControladorUsuarios cu = new ControladorUsuarios(ventana);
     }
 
     @Override
