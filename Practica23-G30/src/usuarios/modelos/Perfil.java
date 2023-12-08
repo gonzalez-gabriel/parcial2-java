@@ -23,4 +23,13 @@ public enum Perfil {
     public String toString() {
         return perfil;
     }
+    
+    public static Perfil fromString(String valor) {
+        for (Perfil perfil : Perfil.values()) {
+            if (perfil.perfil.equalsIgnoreCase(valor)) {
+                return perfil;
+            }
+        }
+        throw new IllegalArgumentException("No se encontró un perfil con el valor: " + valor);
+    }
 }
