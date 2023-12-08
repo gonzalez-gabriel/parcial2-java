@@ -91,14 +91,39 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
         jLabel6.setText("Perfil");
 
         txtCorreo.setToolTipText("Correo del usuario");
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCorreoPresionarTecla(evt);
+            }
+        });
 
         txtApellido.setToolTipText("Apellido del usuario");
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidoPresionarTecla(evt);
+            }
+        });
 
         txtNombre.setToolTipText("Nombre del usuario");
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombrePresionarTecla(evt);
+            }
+        });
 
         passClave.setToolTipText("Contraseña");
+        passClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passClavePresionarTecla(evt);
+            }
+        });
 
         passClaveRepetida.setToolTipText("Repetir contraseña");
+        passClaveRepetida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passClaveRepetidaPresionarTecla(evt);
+            }
+        });
 
         comboPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboPerfil.setToolTipText("Perfil del usuario");
@@ -194,6 +219,26 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
     private void btnCancelarClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClick
         this.controlador.btnCancelarClic(evt);
     }//GEN-LAST:event_btnCancelarClick
+
+    private void txtCorreoPresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoPresionarTecla
+        this.controlador.txtCorreoPresionarTecla(evt);
+    }//GEN-LAST:event_txtCorreoPresionarTecla
+
+    private void txtApellidoPresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoPresionarTecla
+        this.controlador.txtApellidoPresionarTecla(evt);
+    }//GEN-LAST:event_txtApellidoPresionarTecla
+
+    private void txtNombrePresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombrePresionarTecla
+        this.controlador.txtNombrePresionarTecla(evt);
+    }//GEN-LAST:event_txtNombrePresionarTecla
+
+    private void passClavePresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passClavePresionarTecla
+        this.controlador.passClavePresionarTecla(evt);
+    }//GEN-LAST:event_passClavePresionarTecla
+
+    private void passClaveRepetidaPresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passClaveRepetidaPresionarTecla
+        this.controlador.passClaveRepetidaPresionarTecla(evt);
+    }//GEN-LAST:event_passClaveRepetidaPresionarTecla
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

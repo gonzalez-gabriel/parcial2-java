@@ -35,7 +35,7 @@ public class ControladorAMUsuario implements IControladorAMUsuario {
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);
     }
-    
+
     public ControladorAMUsuario(VentanaUsuarios ventanaPadre, Usuario usuario) {
         this.ventana = new VentanaAMUsuario(this, ventanaPadre, true);
         this.ventana.setTitle(TITULO_MODIFICAR);
@@ -87,7 +87,7 @@ public class ControladorAMUsuario implements IControladorAMUsuario {
 
     @Override
     public void btnCancelarClic(ActionEvent evt) {
-        
+
         // Agregar msj de confirmación
         this.ventana.setVisible(false);
         this.ventana.dispose();
@@ -95,27 +95,37 @@ public class ControladorAMUsuario implements IControladorAMUsuario {
 
     @Override
     public void txtApellidoPresionarTecla(KeyEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.guardar();
+        }
     }
 
     @Override
     public void txtNombrePresionarTecla(KeyEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.guardar();
+        }
     }
 
     @Override
     public void txtCorreoPresionarTecla(KeyEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.guardar();
+        }
     }
 
     @Override
     public void passClavePresionarTecla(KeyEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.guardar();
+        }
     }
 
     @Override
     public void passClaveRepetidaPresionarTecla(KeyEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.guardar();
+        }
     }
 
 }
