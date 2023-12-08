@@ -28,6 +28,10 @@ public interface IGestorUsuarios {
     public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
     public static final String USUARIO_INEXISTENTE = "No existe el usuario especificado";
     public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
+    public static final String ARCHIVO_ERROR_LECTURA = "No se pudo leer el archivo";
+    public static final String ARCHIVO_EXITO_LECTURA = "Archivo recuperado exitosamente";
+    public static final String ARCHIVO_ERROR_GUARDAR = "Error al guardar el archivo";
+    public static final String ARCHIVO_EXITO_GUARDAR = "Archivo guardado exitosamente";
 
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);
     
