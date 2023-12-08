@@ -4,17 +4,11 @@
  */
 package usuarios.vistas;
 
-import interfaces.IGestorUsuarios;
+import interfaces.IControladorAMUsuario;
 import java.awt.Dialog;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import usuarios.modelos.GestorUsuarios;
-import usuarios.modelos.ModeloComboPerfiles;
-import usuarios.modelos.Perfil;
-import usuarios.modelos.Usuario;
 
 /**
  *
@@ -22,19 +16,15 @@ import usuarios.modelos.Usuario;
  */
 public class VentanaAMUsuario extends javax.swing.JDialog {
 
+    private IControladorAMUsuario controlador;
+
     /**
      * Creates new form VentanaAMUsuario
      */
-    public VentanaAMUsuario(Dialog ventanaPadre) {
-        super(ventanaPadre, true);
+    public VentanaAMUsuario(IControladorAMUsuario controlador, Dialog ventanaPadre, boolean modal) {
+        super(ventanaPadre, modal);
+        this.controlador = controlador;
         initComponents();
-        this.configurarComboPerfiles();
-        setVisible(true);
-    }
-
-    private void configurarComboPerfiles() {
-        ModeloComboPerfiles mcp = new ModeloComboPerfiles();
-        this.comboPerfil.setModel(mcp);
     }
 
     public JComboBox<String> verPerfil() {
@@ -113,6 +103,7 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
         comboPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboPerfil.setToolTipText("Perfil del usuario");
 
+        btnGuardar.setMnemonic('G');
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +111,7 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
             }
         });
 
+        btnCancelar.setMnemonic('C');
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,29 +126,29 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCorreo)
+                    .addComponent(comboPerfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCorreo)
-                            .addComponent(txtApellido)
-                            .addComponent(txtNombre)
-                            .addComponent(passClave)
-                            .addComponent(passClaveRepetida)
-                            .addComponent(comboPerfil, 0, 229, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnGuardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancelar))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(passClave, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                                .addComponent(passClaveRepetida)
+                                .addComponent(txtApellido)
+                                .addComponent(txtNombre)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,17 +167,17 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passClaveRepetida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(passClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(passClaveRepetida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
@@ -196,22 +188,7 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClick
-        String correo = this.txtCorreo.getText().trim();
-        String apellido = this.txtApellido.getText().trim();
-        String nombre = this.txtNombre.getText().trim();
-        String clave = new String(this.passClave.getPassword());
-        String claveRepetida = new String(this.passClaveRepetida.getPassword());
-        Perfil perfil = ((ModeloComboPerfiles) this.comboPerfil.getModel()).obtenerPerfil();
-
-        IGestorUsuarios gu = GestorUsuarios.instanciar();
-        System.out.println(gu.crearUsuario(correo, apellido, nombre, perfil, clave, claveRepetida));
-
-        System.out.println("Usuarios");
-        System.out.println("========");
-        for (Usuario u : gu.verUsuarios()) {
-            u.mostrar();
-            System.out.println();
-        }
+        this.controlador.btnGuardarClic(evt);
     }//GEN-LAST:event_btnGuardarClick
 
     private void btnCancelarClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClick
