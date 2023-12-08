@@ -6,6 +6,7 @@ package usuarios.controladores;
 
 import interfaces.IControladorAMUsuario;
 import interfaces.IControladorUsuarios;
+import interfaces.IGestorUsuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -54,7 +55,22 @@ public class ControladorUsuarios implements IControladorUsuarios {
 
     @Override
     public void btnBorrarClic(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int opcion = JOptionPane.showOptionDialog(
+                ventana,
+                CONFIRMACION,
+                TITULO,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                new Object[]{"Borrar", "Cancelar"},
+                this
+        );
+        if(opcion == JOptionPane.YES_OPTION) {
+            Usuario usuarioBorrar = mtu.verUsuario(this.ventana.verTablaUsuarios().getSelectedRow());
+            System.out.println(gu.borrarUsuario(usuarioBorrar));
+            mtu.quitarUsuario(usuarioBorrar);
+            JOptionPane.showMessageDialog(null, IGestorUsuarios.EXITO_BORRADO, "Usuario Borrado", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     @Override

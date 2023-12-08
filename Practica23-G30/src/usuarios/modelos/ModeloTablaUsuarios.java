@@ -67,5 +67,10 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
     public Usuario verUsuario(int row) {
         return this.usuarios.get(row);
     }
+    
+    public void quitarUsuario(Usuario usuario) {
+        this.usuarios.remove(usuario);
+        this.fireTableDataChanged();
+    }
 
 }
