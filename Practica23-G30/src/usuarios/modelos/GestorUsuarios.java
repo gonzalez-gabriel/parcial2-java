@@ -58,6 +58,28 @@ public class GestorUsuarios implements IGestorUsuarios {
     }
 
     @Override
+    public String modificarUsuario(Usuario usuarioAModificar, String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida) {
+        if (this.usuarios.isEmpty() || !this.usuarios.contains(usuarioAModificar)) {
+            return USUARIO_INEXISTENTE;
+        }
+        String validez = validarDatos(correo, apellido, nombre, clave, claveRepetida, perfil);
+        
+        if (!validez.equals(VALIDACION_EXITO)) {
+            return validez;
+        }
+        
+        int i = this.usuarios.indexOf(usuarioAModificar);
+        usuarioAModificar.asignarApellido(apellido);
+        usuarioAModificar.asignarNombre(nombre);
+        usuarioAModificar.asignarPerfil(perfil);
+        usuarioAModificar.asignarClave(clave);
+        this.usuarios.set(i, usuarioAModificar);
+        
+        return EXITO_MODIFICADO;
+
+    }
+
+    @Override
     public String borrarUsuario(Usuario usuario) {
         if ((usuario.verPerfil().equals(Perfil.CLIENTE)) && (!usuario.verPedidos().isEmpty())) {
             return ERROR_PERMISOS;

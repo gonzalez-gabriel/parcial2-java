@@ -30,6 +30,8 @@ public interface IGestorUsuarios {
     public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
 
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);
+    
+    public String modificarUsuario(Usuario usuarioAModificar, String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);   
 
     public String borrarUsuario(Usuario usuario);
 
