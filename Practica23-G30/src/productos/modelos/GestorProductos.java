@@ -250,8 +250,7 @@ public class GestorProductos implements IGestorProductos {
         return null;
     }
 
-    @Override
-    public String validarDatos(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
+    private String validarDatos(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         if (codigo <= 0) {
             return ERROR_CODIGO;
         }

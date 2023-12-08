@@ -38,5 +38,4 @@ public interface IGestorProductos {
     public boolean existeEsteProducto(Producto producto);
     public List<Producto> verProductosPorCategoria(Categoria categoria);
     public Producto obtenerProducto(Integer codigo);
-    public String validarDatos (int codigo, String descripcion, float precio, Categoria categoria, Estado estado);
 }

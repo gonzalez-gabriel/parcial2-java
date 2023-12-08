@@ -47,5 +47,4 @@ public interface IGestorUsuarios {
 
     public Usuario obtenerUsuario(String correo);
 
-    public String validarDatos(String correo, String apellido, String nombre, String clave, String claveRepetida, Perfil perfil);
 }

@@ -257,8 +257,7 @@ public class GestorUsuarios implements IGestorUsuarios {
         return null;
     }
 
-    @Override
-    public String validarDatos(String correo, String apellido, String nombre, String clave, String claveRepetida, Perfil perfil) {
+    private String validarDatos(String correo, String apellido, String nombre, String clave, String claveRepetida, Perfil perfil) {
         if (correo == null || !correo.contains("@")) {
             return ERROR_CORREO;
         }

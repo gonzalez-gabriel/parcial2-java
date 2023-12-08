@@ -119,8 +119,7 @@ public class GestorPedidos implements IGestorPedidos {
         return null;
     }
 
-    @Override
-    public String validarDatos(int numero, LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+    private String validarDatos(int numero, LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         if (numero <= 0) {
             return ERROR_NUMERO;
         }

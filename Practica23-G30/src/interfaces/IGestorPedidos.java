@@ -37,5 +37,4 @@ public interface IGestorPedidos {
     public String cancelarPedido(Pedido pedido);
     public boolean existeEstePedido(Pedido pedido);
     public Pedido obtenerPedido(Integer numero);
-    public String validarDatos (int numero, LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente);
 }
