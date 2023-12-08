@@ -4,6 +4,7 @@
  */
 package usuarios.controladores;
 
+import interfaces.IControladorAMUsuario;
 import interfaces.IControladorUsuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -18,12 +19,12 @@ import usuarios.vistas.VentanaUsuarios;
  *
  * @author gabri
  */
-public class ControladorUsuarios implements IControladorUsuarios{
-    
+public class ControladorUsuarios implements IControladorUsuarios {
+
     private VentanaUsuarios ventana;
     private GestorUsuarios gu = GestorUsuarios.instanciar();
     private ModeloTablaUsuarios mtu = new ModeloTablaUsuarios();
-    
+
     public ControladorUsuarios(VentanaPrincipal ventanaPadre) {
         this.ventana = new VentanaUsuarios(this, ventanaPadre, true);
         this.ventana.setTitle(TITULO);
@@ -31,7 +32,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);
     }
-    
+
     private void limpiarCampos() {
         this.ventana.verTxtApellido().setText(null);
         this.ventana.verTxtApellido().setRequestFocusEnabled(true);
@@ -41,12 +42,12 @@ public class ControladorUsuarios implements IControladorUsuarios{
 
     @Override
     public void btnNuevoClic(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IControladorAMUsuario controladorAMUsuario = new ControladorAMUsuario(this.ventana);
     }
 
     @Override
     public void btnModificarClic(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
 
     @Override
@@ -58,7 +59,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
     public void ventanaObtenerFoco(WindowEvent evt) {
         this.limpiarCampos();
         mtu.actualizar();
-        if(mtu.getRowCount() > 0) {
+        if (mtu.getRowCount() > 0) {
             this.ventana.verTablaUsuarios().setRowSelectionInterval(0, 0);
             this.ventana.verBtnBorrar().setEnabled(true);
             this.ventana.verBtnModificar().setEnabled(true);
@@ -77,7 +78,7 @@ public class ControladorUsuarios implements IControladorUsuarios{
     @Override
     public void txtApellidoPresionarTecla(KeyEvent evt) {
         char c = evt.getKeyChar();
-        if(c == KeyEvent.VK_ENTER) {
+        if (c == KeyEvent.VK_ENTER) {
             this.btnBuscarClic(null);
         }
     }
@@ -85,9 +86,9 @@ public class ControladorUsuarios implements IControladorUsuarios{
     @Override
     public void btnBuscarClic(ActionEvent evt) {
         String apellido = this.ventana.verTxtApellido().getText();
-        if(!gu.verUsuarios().isEmpty()) {
-            if((apellido != null) && (!apellido.isBlank())) {
-                if(!gu.buscarUsuarios(apellido).isEmpty()){
+        if (!gu.verUsuarios().isEmpty()) {
+            if ((apellido != null) && (!apellido.isBlank())) {
+                if (!gu.buscarUsuarios(apellido).isEmpty()) {
                     mtu.buscarUsuario(apellido);
                 } else {
                     JOptionPane.showMessageDialog(ventana, "No se encontraron usuarios con ese apellido.", TITULO, JOptionPane.INFORMATION_MESSAGE);
@@ -95,13 +96,12 @@ public class ControladorUsuarios implements IControladorUsuarios{
             } else {
                 mtu.actualizar();
             }
-                this.ventana.verTablaUsuarios().setRowSelectionInterval(0, 0);
-                this.ventana.verBtnBorrar().setEnabled(true);
-                this.ventana.verBtnModificar().setEnabled(true);
+            this.ventana.verTablaUsuarios().setRowSelectionInterval(0, 0);
+            this.ventana.verBtnBorrar().setEnabled(true);
+            this.ventana.verBtnModificar().setEnabled(true);
         } else {
             JOptionPane.showMessageDialog(ventana, "La lista de usuarios está vacía.", TITULO, JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
-    
+
 }

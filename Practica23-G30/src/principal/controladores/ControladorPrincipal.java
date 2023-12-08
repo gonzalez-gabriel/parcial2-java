@@ -135,19 +135,19 @@ public class ControladorPrincipal implements IControladorPrincipal {
         }
         System.out.println();
         
-        System.out.println(gu.crearUsuario("Juan@gmail.com", "Perez", "jperez", Perfil.EMPLEADO, "123", "123"));
-        System.out.println(gu.crearUsuario("Ana@gmail.com", "Fernandez", "afernandez", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Luis@gmail.com", "Gonzalez", "lgonzalez", Perfil.ENCARGADO, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan1@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan2@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan3@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan4@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan5@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan6@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan7@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan8@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan9@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
-        System.out.println(gu.crearUsuario("Juan10@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan@gmail.com", "Perez", "jperez", Perfil.EMPLEADO, "123", "123"));
+//        System.out.println(gu.crearUsuario("Ana@gmail.com", "Fernandez", "afernandez", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Luis@gmail.com", "Gonzalez", "lgonzalez", Perfil.ENCARGADO, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan1@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan2@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan3@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan4@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan5@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan6@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan7@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan8@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan9@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
+//        System.out.println(gu.crearUsuario("Juan10@gmail.com", "Gonzalez", "juan", Perfil.CLIENTE, "123", "123"));
 
         establecerLookAndFeel("Nimbus");
         IControladorPrincipal cp = new ControladorPrincipal();
