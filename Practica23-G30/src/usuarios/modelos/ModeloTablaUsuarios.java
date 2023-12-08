@@ -13,11 +13,12 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author gabri
  */
-public class ModeloTablaUsuarios extends AbstractTableModel{
+public class ModeloTablaUsuarios extends AbstractTableModel {
+
     private IGestorUsuarios gu = GestorUsuarios.instanciar();
     private List<String> nombresColumnas = new ArrayList<>();
     private List<Usuario> usuarios = new ArrayList<>();
-    
+
     public ModeloTablaUsuarios() {
         this.nombresColumnas.add("Apellido");
         this.nombresColumnas.add("Nombre");
@@ -38,10 +39,13 @@ public class ModeloTablaUsuarios extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Usuario usuario = this.usuarios.get(rowIndex);
-        switch(columnIndex) {
-            case 0: return usuario.verApellido();
-            case 1: return usuario.verNombre();
-            default: return usuario.verPerfil();
+        switch (columnIndex) {
+            case 0:
+                return usuario.verApellido();
+            case 1:
+                return usuario.verNombre();
+            default:
+                return usuario.verPerfil();
         }
     }
 
@@ -49,15 +53,19 @@ public class ModeloTablaUsuarios extends AbstractTableModel{
     public String getColumnName(int column) {
         return this.nombresColumnas.get(column);
     }
-    
+
     public void actualizar() {
         this.usuarios = gu.verUsuarios();
         this.fireTableDataChanged();
     }
-    
+
     public void buscarUsuario(String apellido) {
         this.usuarios = gu.buscarUsuarios(apellido);
         this.fireTableDataChanged();
     }
-    
+
+    public Usuario verUsuario(int row) {
+        return this.usuarios.get(row);
+    }
+
 }

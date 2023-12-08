@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import principal.vistas.VentanaPrincipal;
 import usuarios.modelos.GestorUsuarios;
 import usuarios.modelos.ModeloTablaUsuarios;
+import usuarios.modelos.Usuario;
 import usuarios.vistas.VentanaUsuarios;
 
 /**
@@ -47,7 +48,8 @@ public class ControladorUsuarios implements IControladorUsuarios {
 
     @Override
     public void btnModificarClic(ActionEvent evt) {
-
+        Usuario usuario = mtu.verUsuario(this.ventana.verTablaUsuarios().getSelectedRow());
+        IControladorAMUsuario controladorAMUsuario = new ControladorAMUsuario(this.ventana, usuario);
     }
 
     @Override

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import usuarios.modelos.GestorUsuarios;
 import usuarios.modelos.ModeloComboPerfiles;
 import usuarios.modelos.Perfil;
+import usuarios.modelos.Usuario;
 import usuarios.vistas.VentanaAMUsuario;
 import usuarios.vistas.VentanaUsuarios;
 
@@ -31,6 +32,26 @@ public class ControladorAMUsuario implements IControladorAMUsuario {
         this.ventana.setTitle(TITULO_NUEVO);
         this.ventana.verTxtCorreo().requestFocus();
         this.ventana.verPerfil().setModel(new ModeloComboPerfiles());
+        this.ventana.setLocationRelativeTo(null);
+        this.ventana.setVisible(true);
+    }
+    
+    public ControladorAMUsuario(VentanaUsuarios ventanaPadre, Usuario usuario) {
+        this.ventana = new VentanaAMUsuario(this, ventanaPadre, true);
+        this.ventana.setTitle(TITULO_MODIFICAR);
+        String correo = usuario.verCorreo();
+        String apellido = usuario.verApellido();
+        String nombre = usuario.verNombre();
+        Perfil perfil = usuario.verPerfil();
+        String clave = usuario.verClave();
+        this.ventana.verTxtCorreo().setText(correo);
+        this.ventana.verTxtApellido().setText(apellido);
+        this.ventana.verTxtNombre().setText(nombre);
+        this.ventana.verPerfil().setModel(new ModeloComboPerfiles(perfil));
+        this.ventana.verPassClave().setText(clave);
+        this.ventana.verPassClaveRepetida().setText(clave);
+        this.ventana.verTxtCorreo().setEnabled(false);
+        this.ventana.verTxtApellido().requestFocus();
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);
     }
@@ -66,7 +87,10 @@ public class ControladorAMUsuario implements IControladorAMUsuario {
 
     @Override
     public void btnCancelarClic(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        // Agregar msj de confirmación
+        this.ventana.setVisible(false);
+        this.ventana.dispose();
     }
 
     @Override

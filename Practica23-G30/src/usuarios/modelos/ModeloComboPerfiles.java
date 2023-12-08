@@ -17,6 +17,11 @@ public class ModeloComboPerfiles extends DefaultComboBoxModel {
             this.addElement(perfil);
         }
     }
+    
+    public ModeloComboPerfiles(Perfil perfil) {
+        this();
+        this.setSelectedItem(perfil);
+    }
 
     public Perfil obtenerPerfil() {
         return (Perfil) this.getSelectedItem();

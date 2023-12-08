@@ -192,7 +192,7 @@ public class VentanaAMUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGuardarClick
 
     private void btnCancelarClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClick
-        this.dispose();
+        this.controlador.btnCancelarClic(evt);
     }//GEN-LAST:event_btnCancelarClick
 
 
