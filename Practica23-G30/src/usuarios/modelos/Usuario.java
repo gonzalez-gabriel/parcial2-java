@@ -32,6 +32,10 @@ public abstract class Usuario {
     public Perfil verPerfil() {
         return perfil;
     }
+    
+    public void asignarPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
 
     public String verCorreo() {
         return correo;
