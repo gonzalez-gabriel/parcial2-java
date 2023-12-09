@@ -25,6 +25,17 @@ public class GestorUsuarios implements IGestorUsuarios {
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private static GestorUsuarios gestor;
 
+    // Comparadores
+    private Comparator<Usuario> comparatorApellidoYNombre = (Usuario u1, Usuario u2) -> {
+        if (!u1.verApellido().equals(u2.verApellido())) {
+            return u1.verApellido().compareTo(u2.verApellido());
+        } else {
+
+            return u1.verNombre().compareTo(u2.verNombre());
+        }
+    };
+
+    // Constante para archivos
     public static final String NOMBRE_ARCHIVO = "./Usuarios.txt";
 
     private GestorUsuarios() {
@@ -61,7 +72,7 @@ public class GestorUsuarios implements IGestorUsuarios {
                     if (perfil == Perfil.ENCARGADO) {
                         usuario = new Encargado(correo, clave, apellido, nombre, perfil);
                     }
-                    
+
                     this.usuarios.add(usuario);
                 }
                 br.close();
@@ -87,30 +98,30 @@ public class GestorUsuarios implements IGestorUsuarios {
             return null;
         }
     }
-    
+
     private String guardarEnArchivo() {
         BufferedWriter bw = null;
         File file = this.obtenerArchivo();
-        if(file != null) {
+        if (file != null) {
             try {
                 bw = new BufferedWriter(new FileWriter(file));
-                for(int i = 0; i < this.usuarios.size(); i++) {
+                for (int i = 0; i < this.usuarios.size(); i++) {
                     Usuario usuario = this.usuarios.get(i);
                     String cadena = usuario.verCorreo() + ";";
                     cadena += usuario.verApellido() + ";";
                     cadena += usuario.verNombre() + ";";
                     cadena += usuario.verPerfil() + ";";
-                    cadena += usuario.verClave()+ ";";
+                    cadena += usuario.verClave() + ";";
                     bw.write(cadena);
-                    if(i < this.usuarios.size() - 1) {
+                    if (i < this.usuarios.size() - 1) {
                         bw.newLine();
                     }
                 }
                 return ARCHIVO_EXITO_GUARDAR;
-            } catch(IOException e) {
+            } catch (IOException e) {
                 return ARCHIVO_ERROR_GUARDAR;
             } finally {
-                if (bw != null){
+                if (bw != null) {
                     try {
                         bw.close();
                     } catch (IOException ioe) {
@@ -146,12 +157,12 @@ public class GestorUsuarios implements IGestorUsuarios {
         }
 
         this.usuarios.add(u);
-        this.verUsuarios();
+        this.ordenarUsuarios();
         String msj = this.guardarEnArchivo();
-        if(!msj.equals(ARCHIVO_EXITO_GUARDAR)){
+        if (!msj.equals(ARCHIVO_EXITO_GUARDAR)) {
             return msj;
         }
-        
+
         return EXITO_CREADO;
 
     }
@@ -174,12 +185,12 @@ public class GestorUsuarios implements IGestorUsuarios {
         usuarioAModificar.asignarClave(clave);
         this.usuarios.set(i, usuarioAModificar);
 
-        this.verUsuarios();
+        this.ordenarUsuarios();
         String msj = this.guardarEnArchivo();
-        if(!msj.equals(ARCHIVO_EXITO_GUARDAR)){
+        if (!msj.equals(ARCHIVO_EXITO_GUARDAR)) {
             return msj;
         }
-        
+
         return EXITO_MODIFICADO;
 
     }
@@ -190,9 +201,9 @@ public class GestorUsuarios implements IGestorUsuarios {
             return ERROR_PERMISOS;
         }
         this.usuarios.remove(usuario);
-        
+
         String msj = this.guardarEnArchivo();
-        if(!msj.equals(ARCHIVO_EXITO_GUARDAR)){
+        if (!msj.equals(ARCHIVO_EXITO_GUARDAR)) {
             return msj;
         }
         return EXITO_BORRADO;
@@ -200,15 +211,7 @@ public class GestorUsuarios implements IGestorUsuarios {
 
     @Override
     public List<Usuario> verUsuarios() {
-        Comparator<Usuario> comparatorApellidoYNombre = (Usuario u1, Usuario u2) -> {
-            if (!u1.verApellido().equals(u2.verApellido())) {
-                return u1.verApellido().compareTo(u2.verApellido());
-            } else {
-
-                return u1.verNombre().compareTo(u2.verNombre());
-            }
-        };
-        Collections.sort(usuarios, comparatorApellidoYNombre);
+        this.ordenarUsuarios();
         return this.usuarios;
     }
 
@@ -224,19 +227,16 @@ public class GestorUsuarios implements IGestorUsuarios {
                 usuariosBuscados.add(u);
             }
         }
-
-        Comparator<Usuario> comparatorApellidoYNombre = (Usuario u1, Usuario u2) -> {
-            if (!u1.verApellido().equals(u2.verApellido())) {
-                return u1.verApellido().compareTo(u2.verApellido());
-            } else {
-
-                return u1.verNombre().compareTo(u2.verNombre());
-            }
-
-        };
-
-        Collections.sort(usuariosBuscados, comparatorApellidoYNombre);
+        this.ordenarUsuarios(usuariosBuscados);
         return usuariosBuscados;
+    }
+
+    private void ordenarUsuarios() {
+        Collections.sort(usuarios, comparatorApellidoYNombre);
+    }
+
+    private void ordenarUsuarios(List<Usuario> usuarios) {
+        Collections.sort(usuarios, comparatorApellidoYNombre);
     }
 
     @Override
