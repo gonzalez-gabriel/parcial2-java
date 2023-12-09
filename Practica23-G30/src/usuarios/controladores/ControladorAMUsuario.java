@@ -48,6 +48,7 @@ public class ControladorAMUsuario implements IControladorAMUsuario {
         this.ventana.verTxtApellido().setText(apellido);
         this.ventana.verTxtNombre().setText(nombre);
         this.ventana.verPerfil().setModel(new ModeloComboPerfiles(perfil));
+        this.ventana.verPerfil().setEnabled(false);
         this.ventana.verPassClave().setText(clave);
         this.ventana.verPassClaveRepetida().setText(clave);
         this.ventana.verTxtCorreo().setEnabled(false);
