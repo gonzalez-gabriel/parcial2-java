@@ -146,6 +146,7 @@ public class GestorUsuarios implements IGestorUsuarios {
         }
 
         this.usuarios.add(u);
+        this.verUsuarios();
         String msj = this.guardarEnArchivo();
         if(!msj.equals(ARCHIVO_EXITO_GUARDAR)){
             return msj;
@@ -173,6 +174,7 @@ public class GestorUsuarios implements IGestorUsuarios {
         usuarioAModificar.asignarClave(clave);
         this.usuarios.set(i, usuarioAModificar);
 
+        this.verUsuarios();
         String msj = this.guardarEnArchivo();
         if(!msj.equals(ARCHIVO_EXITO_GUARDAR)){
             return msj;
