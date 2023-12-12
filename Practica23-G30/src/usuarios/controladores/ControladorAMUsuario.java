@@ -88,8 +88,6 @@ public class ControladorAMUsuario implements IControladorAMUsuario {
 
     @Override
     public void btnCancelarClic(ActionEvent evt) {
-
-        // Agregar msj de confirmación
         this.ventana.setVisible(false);
         this.ventana.dispose();
     }

@@ -1,9 +1,0 @@
-agustin@gmail.com;Andrada;Julian;EMPLEADO;ggg;
-@dsa;Barraza;Exequiel;EMPLEADO;333;
-juan@gmail.com;Bulacio Modificado;Juan;ENCARGADO;hhh;
-@;Cornelio Modificado;Facundo;ENCARGADO;1234;
-gabi@gmail.com;Gonzalez;Gabriel Modificado;EMPLEADO;1234;
-moni@gmail.com;Martinez;AMonica Modificado;EMPLEADO;magaga;
-guido@gmail.com;Martinez;Guido;ENCARGADO;4321;
-gaston@gmail.com;Orozco;Gaston;CLIENTE;gas;
-zaza@gmail.com;Zarzasa;Julieta;CLIENTE;1234;
