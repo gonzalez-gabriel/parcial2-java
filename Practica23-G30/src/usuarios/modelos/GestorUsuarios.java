@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -260,7 +262,13 @@ public class GestorUsuarios implements IGestorUsuarios {
     }
 
     private String validarDatos(String correo, String apellido, String nombre, String clave, String claveRepetida, Perfil perfil) {
-        if (correo == null || !correo.contains("@")) {
+
+        // Validación de correo con expresión regular.
+        // Ejemplo: prog2@gmail.com es válido
+        String regx = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(regx);
+        Matcher matcher = pattern.matcher(correo);
+        if (correo == null || !matcher.matches()) {
             return ERROR_CORREO;
         }
 
